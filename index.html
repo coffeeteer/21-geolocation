@@ -57,6 +57,20 @@
     /*Compass: https://thenounproject.com/search/?q=compass&i=592352*/
   </style>
   <script>
+
+  const arrow = document.querySelector('.arrow');
+  const speed = docuemnt.querySelector('.speed-value');
+
+  navigotor.geolocation.watchPostion((data) => {
+    console.log(data);
+    speed.textContent = Math.round(data.cords.speed);
+    arrow.style.transform = `rotate(${data.coords.heading})`;
+  }, (err) => {
+    console.error(err);
+    alert('You have to allow the click \'ok\' for the geolocation to work.');
+  });
+
   </script>
 </body>
 </html>
+f
